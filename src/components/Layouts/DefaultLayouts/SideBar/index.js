@@ -1,5 +1,11 @@
+import styles from './Sidebar.module.scss';
+
 function SideBar() {
-    return <h2> SideBar</h2>;
+    return (
+        <aside className={styles.wrapper}>
+            <h2>SideBar</h2>
+        </aside>
+    );
 }
 
 export default SideBar;
