@@ -19,9 +19,13 @@
 .logo {
 }
 
+.search,
+.searchResult {
+    width: 361px;
+}
+
 .search {
     position: relative;
-    width: 361px;
     height: var(--search-height);
     background-color: rgba(22, 24, 25, 0.06);
     border-radius: 92px;
@@ -73,6 +77,13 @@
     &:active {
         background-color: rgba(22, 24, 25, 0.09);
     }
+}
+
+.searchTitle {
+    padding: 5px 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
 }
 
 .clear,
