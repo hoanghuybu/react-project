@@ -18,11 +18,29 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItems from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import MenuItems from '~/components/Popper/Menu/MenuItems';
 
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAfrica}></FontAwesomeIcon>,
         title: 'Vietnamese',
+        children: {
+            title: 'Languange',
+            data: [
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vn',
+                    title: 'Vietnamese',
+                },
+                {
+                    code: 'jp',
+                    title: 'Japanese',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion}></FontAwesomeIcon>,
@@ -43,6 +61,10 @@ function Header() {
             setSearchResult([]);
         }, 0);
     });
+
+    const handleMenuOnChange = (menuItems) => {
+        console.log(menuItems);
+    };
 
     return (
         <header className={styles.wrapper}>
@@ -83,7 +105,7 @@ function Header() {
                     </Button>
                     <Button primary>Login</Button>
 
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuOnChange}>
                         <button className={styles.moreBtn}>
                             <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
                         </button>
