@@ -96,10 +96,32 @@
     color: rgba(22, 24, 25, 0.34);
 }
 
+.actions {
+    display: flex;
+    align-items: center;
+}
+
 .moreBtn {
     font-size: 2rem;
     margin-left: 24px;
     background-color: transparent;
     padding: 8px;
+    cursor: pointer;
+}
+
+.actionsBtn {
+    font-size: 2.2rem;
+    color: #161823;
+    background-color: transparent;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+
+.userAvatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 10px;
     cursor: pointer;
 }
