@@ -1,4 +1,4 @@
-import Header from './Header';
+import Header from '../Header';
 import SideBar from './SideBar';
 import styles from './DefaultLayouts.module.scss';
 
