@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItems from '~/components/AccountItem';
 import 'tippy.js/dist/tippy.css';
+import { useDebounce } from '~/hooks';
 
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
@@ -13,17 +14,19 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounce = useDebounce(searchValue, 500);
+
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounce.trim()) {
             setSearchResult([]);
             return;
         }
 
         setLoading(true);
 
-        fetch(`https://jsonplaceholder.typicode.com/users?q=${encodeURIComponent(searchValue)}&type=more`)
+        fetch(`https://jsonplaceholder.typicode.com/users?q=${encodeURIComponent(debounce)}&type=more`)
             .then((res) => res.json())
             .then((res) => {
                 setSearchResult(res);
@@ -32,7 +35,7 @@ function Search() {
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [debounce]);
 
     const handleHideResult = () => {
         setShowResult(false);
