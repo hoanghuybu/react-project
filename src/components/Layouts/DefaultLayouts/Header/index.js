@@ -3,7 +3,7 @@ import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
-    faCircleXmark,
+    // faCircleXmark,
     faCoins,
     faEarthAfrica,
     faEllipsisVertical,
@@ -14,7 +14,7 @@ import {
     faSignOut,
     faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
-import { faMessage, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
 import HandlessTippy from '@tippyjs/react/headless';
 import { useEffect, useState } from 'react';
@@ -23,6 +23,8 @@ import AccountItems from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import 'tippy.js/dist/tippy.css';
+import { InboxIcon, MessageIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const MENU_ITEMS = [
     {
@@ -135,9 +137,14 @@ function Header() {
                             <Button text leftIcon={<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>}>
                                 Upload
                             </Button>
+                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                <button className={styles.actionsBtn}>
+                                    <MessageIcon></MessageIcon>
+                                </button>
+                            </Tippy>
                             <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
                                 <button className={styles.actionsBtn}>
-                                    <FontAwesomeIcon icon={faMessage}></FontAwesomeIcon>
+                                    <InboxIcon></InboxIcon>
                                 </button>
                             </Tippy>
                         </>
@@ -151,11 +158,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuOnChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={styles.userAvatar}
                                 alt="Do Hoang Huy"
                                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/b47bf9a7076dade7aa42e8657ef3d3f9~c5_100x100.jpeg?x-expires=1681200000&x-signature=Qmk7icxDOrVONo0RFdhOfeDzwq4%3D"
-                            ></img>
+                            ></Image>
                         ) : (
                             <button className={styles.moreBtn}>
                                 <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
