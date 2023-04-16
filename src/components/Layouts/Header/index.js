@@ -19,6 +19,8 @@ import 'tippy.js/dist/tippy.css';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
+import routeConfig from '~/config/route';
 
 const MENU_ITEMS = [
     {
@@ -88,9 +90,9 @@ function Header() {
     return (
         <header className={styles.wrapper}>
             <div className={styles.inner}>
-                <div className={styles.logo}>
+                <Link to={routeConfig.home} className={styles.logo}>
                     <img src={images.logo} alt="TikTok"></img>
-                </div>
+                </Link>
                 <Search></Search>
                 <div className={styles.actions}>
                     {currentUser ? (

@@ -44,6 +44,13 @@ function Search() {
         inputRef.current.focus();
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(e.target.value);
+        }
+    };
+
     return (
         <HandlessTippy
             interactive
@@ -66,7 +73,7 @@ function Search() {
                     ref={inputRef}
                     placeholder="Search Account And Video"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 ></input>
                 {!!searchValue && !loading && (
@@ -77,7 +84,7 @@ function Search() {
 
                 {loading && <FontAwesomeIcon className={styles.loading} icon={faSpinner}></FontAwesomeIcon>}
 
-                <button className={styles.searchIcon}>
+                <button className={styles.searchIcon} onMouseDown={(e) => e.preventDefault()}>
                     <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
                 </button>
             </div>
