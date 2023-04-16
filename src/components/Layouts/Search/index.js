@@ -7,6 +7,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItems from '~/components/AccountItem';
 import 'tippy.js/dist/tippy.css';
 import { useDebounce } from '~/hooks';
+import * as searchService from '~/api-service/SearchService';
 
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
@@ -24,17 +25,13 @@ function Search() {
             return;
         }
 
-        setLoading(true);
-
-        fetch(`https://jsonplaceholder.typicode.com/users?q=${encodeURIComponent(debounce)}&type=more`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchService.search(debounce);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
     }, [debounce]);
 
     const handleHideResult = () => {
