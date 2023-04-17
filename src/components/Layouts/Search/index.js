@@ -52,43 +52,45 @@ function Search() {
     };
 
     return (
-        <HandlessTippy
-            interactive
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={styles.searchResult} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={styles.searchTitle}>Accounts</h4>
-                        {searchResult.map((result) => (
-                            <AccountItems key={result.id} data={result} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-            onClickOutside={handleHideResult}
-        >
-            <div className={styles.search}>
-                <input
-                    value={searchValue}
-                    ref={inputRef}
-                    placeholder="Search Account And Video"
-                    spellCheck={false}
-                    onChange={handleChange}
-                    onFocus={() => setShowResult(true)}
-                ></input>
-                {!!searchValue && !loading && (
-                    <button className={styles.clear} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
-                    </button>
+        <div>
+            <HandlessTippy
+                interactive
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={styles.searchResult} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={styles.searchTitle}>Accounts</h4>
+                            {searchResult.map((result) => (
+                                <AccountItems key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
+                onClickOutside={handleHideResult}
+            >
+                <div className={styles.search}>
+                    <input
+                        value={searchValue}
+                        ref={inputRef}
+                        placeholder="Search Account And Video"
+                        spellCheck={false}
+                        onChange={handleChange}
+                        onFocus={() => setShowResult(true)}
+                    ></input>
+                    {!!searchValue && !loading && (
+                        <button className={styles.clear} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
+                        </button>
+                    )}
 
-                {loading && <FontAwesomeIcon className={styles.loading} icon={faSpinner}></FontAwesomeIcon>}
+                    {loading && <FontAwesomeIcon className={styles.loading} icon={faSpinner}></FontAwesomeIcon>}
 
-                <button className={styles.searchIcon} onMouseDown={(e) => e.preventDefault()}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-                </button>
-            </div>
-        </HandlessTippy>
+                    <button className={styles.searchIcon} onMouseDown={(e) => e.preventDefault()}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
+                    </button>
+                </div>
+            </HandlessTippy>
+        </div>
     );
 }
 
