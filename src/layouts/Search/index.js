@@ -7,7 +7,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItems from '~/components/AccountItem';
 import 'tippy.js/dist/tippy.css';
 import { useDebounce } from '~/hooks';
-import * as searchService from '~/api-service/SearchService';
+import * as searchService from '~/service/SearchService';
 
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
