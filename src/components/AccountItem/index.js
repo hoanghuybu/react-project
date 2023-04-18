@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from '../Image';
 import styles from './AccountItems.module.scss';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function AccountItems({ data }) {
     return (
@@ -22,5 +23,9 @@ function AccountItems({ data }) {
         </Link>
     );
 }
+
+AccountItems.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default AccountItems;

@@ -1,6 +1,7 @@
 import Header from '../Header';
 import SideBar from './SideBar';
 import styles from './DefaultLayouts.module.scss';
+import PropTypes from 'prop-types';
 
 function DefaultLayouts({ children }) {
     return (
@@ -13,5 +14,9 @@ function DefaultLayouts({ children }) {
         </div>
     );
 }
+
+DefaultLayouts.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export default DefaultLayouts;
