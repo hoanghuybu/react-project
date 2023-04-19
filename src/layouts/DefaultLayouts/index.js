@@ -1,5 +1,5 @@
 import Header from '../Header';
-import SideBar from './SideBar';
+import SideBar from '../../components/SideBar';
 import styles from './DefaultLayouts.module.scss';
 import PropTypes from 'prop-types';
 
